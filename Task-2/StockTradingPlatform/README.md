@@ -320,6 +320,25 @@ The application now saves the user's portfolio to a file, allowing data to persi
 - Aggregation
 - Financial calculations
 
+## 📌 Step 11A: Input Validation
+
+### Purpose
+
+Improved the application's robustness by validating user input and handling invalid entries gracefully.
+
+### Features
+
+- Prevents crashes caused by non-numeric menu choices.
+- Validates stock quantity input.
+- Rejects zero or negative quantities.
+- Displays user-friendly error messages.
+
+### Java Concepts Used
+
+- Exception Handling (`try-catch`)
+- `InputMismatchException`
+- Input Validation
+
 
 ## 🚀 Learning Outcomes
 

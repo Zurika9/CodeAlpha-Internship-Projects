@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main {
 
@@ -12,7 +13,7 @@ public class Main {
         FileManager.loadPortfolio(user, market);
         FileManager.loadTransactions(user);
 
-        int choice;
+        int choice=0;
 
         do {
 
@@ -30,7 +31,13 @@ public class Main {
             System.out.println("9. Exit");
             System.out.print("Enter your choice: ");
 
-            choice = scanner.nextInt();
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("\n❌ Invalid input! Please enter a number between 1 and 9.");
+                scanner.nextLine(); // Clear invalid input
+                continue;
+            }
 
             switch (choice) {
 
@@ -97,7 +104,21 @@ public class Main {
         }
 
         System.out.print("Enter Quantity: ");
-        int quantity = scanner.nextInt();
+
+        int quantity;
+
+        try {
+            quantity = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("❌ Quantity must be a whole number.");
+            scanner.nextLine();
+            return;
+        }
+
+        if (quantity <= 0) {
+            System.out.println("❌ Quantity must be greater than zero.");
+            return;
+        }
 
         user.buyStock(stock, quantity);
     }
@@ -115,7 +136,21 @@ public class Main {
         }
 
         System.out.print("Enter Quantity: ");
-        int quantity = scanner.nextInt();
+
+        int quantity;
+
+        try {
+            quantity = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("❌ Quantity must be a whole number.");
+            scanner.nextLine();
+            return;
+        }
+
+        if (quantity <= 0) {
+            System.out.println("❌ Quantity must be greater than zero.");
+            return;
+        }
 
         user.sellStock(stock, quantity);
     }
