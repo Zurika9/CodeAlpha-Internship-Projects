@@ -230,6 +230,30 @@ The `Transaction` class records every stock purchase and sale performed by the u
 - Java Time API
 - Enhanced for loop
 
+## 📌 Step 7: Interactive Console Menu
+
+### Purpose
+
+The application now provides an interactive menu-driven interface, allowing users to perform stock trading operations without modifying the source code.
+
+### Features
+
+- View market stocks
+- Buy stocks
+- Sell stocks
+- View portfolio
+- Check wallet balance
+- View transaction history
+- Simulate market price updates
+- Exit application safely
+
+### Java Concepts Used
+
+- Scanner class
+- Switch-case statements
+- Looping (`do-while`)
+- Method decomposition
+
 
 ## 🚀 Learning Outcomes
 
