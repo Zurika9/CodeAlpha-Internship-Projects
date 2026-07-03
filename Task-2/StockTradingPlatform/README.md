@@ -215,6 +215,22 @@ The `Transaction` class records every stock purchase and sale performed by the u
 
 ---
 
+
+## 📌 Step 6B: Transaction History
+
+### Features
+- Records every BUY operation
+- Records every SELL operation
+- Stores transaction timestamp
+- Displays complete trading history
+
+### Java Concepts Used
+- ArrayList
+- Object Composition
+- Java Time API
+- Enhanced for loop
+
+
 ## 🚀 Learning Outcomes
 
 By building this project, I learned:

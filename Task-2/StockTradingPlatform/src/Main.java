@@ -8,18 +8,18 @@ public class Main {
 
         market.displayMarket();
 
-        Stock stock = market.getStockBySymbol("TCS");
+        Stock tcs = market.getStockBySymbol("TCS");
+        Stock infy = market.getStockBySymbol("INFY");
 
-        user.buyStock(stock, 5);
+        user.buyStock(tcs, 5);
+        user.buyStock(infy, 3);
 
-        user.getPortfolio().displayPortfolio();
-
-        user.displayBalance();
-
-        user.sellStock(stock, 2);
+        user.sellStock(tcs, 2);
 
         user.getPortfolio().displayPortfolio();
 
         user.displayBalance();
+
+        user.displayTransactionHistory();
     }
 }
