@@ -1,7 +1,3 @@
-Here is a **complete, professional README.md** for your **CodeAlpha Task 2: Stock Trading Platform**. You can directly copy-paste this into your GitHub repository.
-
----
-
 # 📈 Stock Trading Platform (Java OOP Project)
 
 ## 🧾 Project Overview
