@@ -22,13 +22,25 @@ public class Market {
 
     // Display all stocks
     public void displayMarket() {
-        System.out.println("\n===== STOCK MARKET =====");
-        System.out.println("SYMBOL | COMPANY | PRICE");
-        System.out.println("-----------------------------");
+
+        ConsoleUI.printTitle("STOCK MARKET");
+
+        System.out.printf("%-12s %-35s %-12s%n",
+                "Symbol",
+                "Company",
+                "Price");
+
+        ConsoleUI.printLine();
 
         for (Stock stock : stocks) {
-            stock.displayStock();
+
+            System.out.printf("%-12s %-35s ₹%,.2f%n",
+                    stock.getSymbol(),
+                    stock.getCompanyName(),
+                    stock.getPrice());
         }
+
+        ConsoleUI.printDoubleLine();
     }
 
     // Find stock by symbol (VERY IMPORTANT for buy/sell)

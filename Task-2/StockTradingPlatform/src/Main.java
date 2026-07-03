@@ -17,9 +17,7 @@ public class Main {
 
         do {
 
-            System.out.println("\n====================================");
-            System.out.println("      STOCK TRADING PLATFORM");
-            System.out.println("====================================");
+            ConsoleUI.printTitle("STOCK TRADING PLATFORM");
             System.out.println("1. View Market Stocks");
             System.out.println("2. Buy Stock");
             System.out.println("3. Sell Stock");
@@ -29,6 +27,7 @@ public class Main {
             System.out.println("7. View Transaction History");
             System.out.println("8. Update Market Prices");
             System.out.println("9. Exit");
+            ConsoleUI.printLine();
 
             choice = readMenuChoice(scanner);
 
@@ -47,7 +46,7 @@ public class Main {
                     break;
 
                 case 4:
-                    user.getPortfolio().displayPortfolio();
+                    user.getPortfolio().displayPortfolio(market);
                     break;
 
                 case 5:

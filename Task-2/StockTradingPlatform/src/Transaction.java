@@ -57,15 +57,17 @@ public class Transaction {
     public void displayTransaction() {
 
         DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
-        System.out.println("--------------------------------------");
-        System.out.println("Type      : " + type);
-        System.out.println("Stock     : " + stockSymbol);
-        System.out.println("Quantity  : " + quantity);
-        System.out.printf("Price     : ₹%.2f%n", price);
-        System.out.printf("Total     : ₹%.2f%n", getTotalAmount());
-        System.out.println("Time      : " + dateTime.format(formatter));
+        System.out.printf(
+                "%-8s %-10s %-8d ₹%-11.2f ₹%-13.2f %-20s%n",
+                type,
+                stockSymbol,
+                quantity,
+                price,
+                getTotalAmount(),
+                dateTime.format(formatter)
+        );
     }
 
     public boolean isBuyTransaction() {

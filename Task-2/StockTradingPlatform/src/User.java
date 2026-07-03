@@ -34,9 +34,15 @@ public class User
     }
 
     // Display user balance
-    public void displayBalance()
-    {
-        System.out.printf("%nCurrent Balance: ₹%.2f%n", balance);
+    public void displayBalance() {
+
+        ConsoleUI.printTitle("ACCOUNT BALANCE");
+
+        System.out.printf("%-22s : ₹%,.2f%n",
+                "Available Balance",
+                balance);
+
+        ConsoleUI.printDoubleLine();
     }
 
     // Buy stock
@@ -112,21 +118,34 @@ public class User
         System.out.printf("Updated Balance: ₹%.2f%n", balance);
     }
 
-    public void displayTransactionHistory()
-    {
+    public void displayTransactionHistory() {
 
-        if (transactions.isEmpty())
-        {
+        if (transactions.isEmpty()) {
             System.out.println("\nNo transactions found.");
             return;
         }
 
-        System.out.println("\n========== TRANSACTION HISTORY ==========");
+        System.out.println("\n==============================================================================================");
+        System.out.println("                              TRANSACTION HISTORY");
+        System.out.println("==============================================================================================");
 
-        for (Transaction transaction : transactions)
-        {
+        System.out.printf(
+                "%-8s %-10s %-8s %-13s %-15s %-20s%n",
+                "Type",
+                "Symbol",
+                "Qty",
+                "Price",
+                "Total",
+                "Date & Time"
+        );
+
+        System.out.println("----------------------------------------------------------------------------------------------");
+
+        for (Transaction transaction : transactions) {
             transaction.displayTransaction();
         }
+
+        System.out.println("==============================================================================================");
     }
 
     public void setBalance(double balance)
