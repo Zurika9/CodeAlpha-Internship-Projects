@@ -1,23 +1,43 @@
-import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
+/**
+ * Entry point of the Stock Trading Platform application.
+ *
+ * This class initializes the market and user,
+ * displays the main menu,
+ * processes user input,
+ * and coordinates all application operations.
+ *
+ * @author Bhavya Shukla
+ * @version 1.0
+ */
 public class Main {
+
+    /**
+     * Menu option used to exit the application.
+     */
+    private static final int EXIT = 9;
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
+        // Initialize application
         Market market = new Market();
         User user = new User("Bhavya", 100000);
+
+        // Load saved data
         FileManager.loadUser(user);
         FileManager.loadPortfolio(user);
         FileManager.loadTransactions(user);
 
-        int choice=0;
+        int choice;
 
         do {
 
             ConsoleUI.printTitle("STOCK TRADING PLATFORM");
+
             System.out.println("1. View Market Stocks");
             System.out.println("2. Buy Stock");
             System.out.println("3. Sell Stock");
@@ -27,6 +47,7 @@ public class Main {
             System.out.println("7. View Transaction History");
             System.out.println("8. Update Market Prices");
             System.out.println("9. Exit");
+
             ConsoleUI.printLine();
 
             choice = readMenuChoice(scanner);
@@ -63,26 +84,37 @@ public class Main {
 
                 case 8:
                     market.updateMarketPrices();
-                    System.out.println("Market prices updated.");
+                    System.out.println("✅ Market prices updated successfully.");
                     break;
 
-                case 9:
+                case EXIT:
+
                     FileManager.saveUser(user);
                     FileManager.savePortfolio(user);
                     FileManager.saveTransactions(user);
 
-                    System.out.println("Thank you for using Stock Trading Platform.");
+                    ConsoleUI.printDoubleLine();
+                    System.out.println("Thank you for using the Stock Trading Platform!");
+                    System.out.println("Have a great day!");
+                    ConsoleUI.printDoubleLine();
                     break;
 
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("❌ Invalid menu option.");
             }
 
-        } while (choice != 9);
+        } while (choice != EXIT);
 
         scanner.close();
     }
 
+    /**
+     * Reads a positive integer from the user.
+     *
+     * @param scanner Scanner object
+     * @param prompt Prompt to display
+     * @return Valid positive integer
+     */
     private static int readPositiveInteger(Scanner scanner, String prompt) {
 
         while (true) {
@@ -107,6 +139,12 @@ public class Main {
         }
     }
 
+    /**
+     * Reads a valid menu option.
+     *
+     * @param scanner Scanner object
+     * @return Menu choice between 1 and 9
+     */
     private static int readMenuChoice(Scanner scanner) {
 
         while (true) {
@@ -117,7 +155,7 @@ public class Main {
 
                 int choice = scanner.nextInt();
 
-                if (choice >= 1 && choice <= 9) {
+                if (choice >= 1 && choice <= EXIT) {
                     return choice;
                 }
 
@@ -126,42 +164,47 @@ public class Main {
             } catch (InputMismatchException e) {
 
                 System.out.println("❌ Invalid input! Please enter a number.");
-                scanner.nextLine(); // Clear invalid input
+                scanner.nextLine();
             }
         }
     }
 
+    /**
+     * Handles stock purchase.
+     */
     private static void buyStock(Scanner scanner, Market market, User user) {
 
         System.out.print("Enter Stock Symbol: ");
+
         String symbol = scanner.next();
 
         Stock stock = market.getStockBySymbol(symbol);
 
         if (stock == null) {
-            System.out.println("Stock not found.");
+            System.out.println("❌ Stock symbol not found.");
             return;
         }
 
         int quantity = readPositiveInteger(scanner, "Enter Quantity: ");
 
-
         user.buyStock(stock, quantity);
     }
 
+    /**
+     * Handles stock selling.
+     */
     private static void sellStock(Scanner scanner, Market market, User user) {
 
         System.out.print("Enter Stock Symbol: ");
+
         String symbol = scanner.next();
 
         Stock stock = market.getStockBySymbol(symbol);
 
         if (stock == null) {
-            System.out.println("Stock not found.");
+            System.out.println("❌ Stock symbol not found.");
             return;
         }
-
-        System.out.print("Enter Quantity: ");
 
         int quantity = readPositiveInteger(scanner, "Enter Quantity: ");
 
