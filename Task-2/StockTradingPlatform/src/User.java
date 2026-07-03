@@ -1,3 +1,16 @@
+/**
+ * Represents a user of the Stock Trading Platform.
+ *
+ * A user maintains an account balance, a portfolio
+ * of owned stocks, and a transaction history.
+ *
+ * The class provides operations for buying and
+ * selling stocks, viewing account details, and
+ * tracking portfolio performance.
+ *
+ * @author Bhavya Shukla
+ * @version 1.0
+ */
 import java.util.ArrayList;
 import java.util.List;
 public class User
@@ -5,8 +18,8 @@ public class User
 
     private String name;
     private double balance;
-    private Portfolio portfolio;
-    private List<Transaction> transactions;
+    private final Portfolio portfolio;
+    private final List<Transaction> transactions;
 
     // Constructor
     public User(String name, double balance)
@@ -76,10 +89,12 @@ public class User
                         )
         );
 
-        System.out.println("Successfully purchased " + quantity +
-                " shares of " + stock.getSymbol());
+        System.out.printf(
+                "✅ Successfully purchased %d shares of %s.%n",
+                quantity,
+                stock.getSymbol());
 
-        System.out.printf("Remaining Balance: ₹%.2f%n", balance);
+        System.out.printf("Remaining Balance: ₹%,.2f%n", balance);
     }
 
     // Sell stock
@@ -112,10 +127,12 @@ public class User
                 )
         );
 
-        System.out.println("Successfully sold " + quantity +
-                " shares of " + stock.getSymbol());
+        System.out.printf(
+                "✅ Successfully sold %d shares of %s.%n",
+                quantity,
+                stock.getSymbol());
 
-        System.out.printf("Updated Balance: ₹%.2f%n", balance);
+        System.out.printf("Updated Balance: ₹%,.2f%n", balance);
     }
 
     public void displayTransactionHistory() {
@@ -125,9 +142,7 @@ public class User
             return;
         }
 
-        System.out.println("\n==============================================================================================");
-        System.out.println("                              TRANSACTION HISTORY");
-        System.out.println("==============================================================================================");
+        ConsoleUI.printTitle("TRANSACTION HISTORY");
 
         System.out.printf(
                 "%-8s %-10s %-8s %-13s %-15s %-20s%n",
@@ -139,13 +154,13 @@ public class User
                 "Date & Time"
         );
 
-        System.out.println("----------------------------------------------------------------------------------------------");
+        ConsoleUI.printLine();
 
         for (Transaction transaction : transactions) {
             transaction.displayTransaction();
         }
 
-        System.out.println("==============================================================================================");
+        ConsoleUI.printDoubleLine();
     }
 
     public void setBalance(double balance)
@@ -171,9 +186,9 @@ public class User
         double totalInvestment = 0;
         double currentValue = 0;
 
-        System.out.println("\n========== PORTFOLIO PERFORMANCE ==========");
+        ConsoleUI.printTitle("PORTFOLIO PERFORMANCE");
 
-        System.out.printf("%-10s %-8s %-15s%n",
+        System.out.printf("%-12s %-10s %-18s%n",
                 "Stock",
                 "Quantity",
                 "Current Value");
@@ -202,23 +217,30 @@ public class User
 
             totalInvestment += investment;
 
-            System.out.printf("%-10s %-8d ₹%.2f%n",
+            System.out.printf("%-12s %-10d %-18s%n",
                     symbol,
                     quantity,
-                    value);
+                    String.format("₹%,.2f", value));
         }
 
-        System.out.println("-------------------------------------");
+        ConsoleUI.printLine();
 
-        System.out.printf("Investment : ₹%.2f%n", totalInvestment);
+        System.out.printf("Investment : %s%n",
+                String.format("₹%,.2f", totalInvestment));
 
-        System.out.printf("Current    : ₹%.2f%n", currentValue);
+        System.out.printf("Current    : %s%n",
+                String.format("₹%,.2f", currentValue));
 
         double profit = currentValue - totalInvestment;
 
         if (profit >= 0)
-            System.out.printf("Profit     : +₹%.2f%n", profit);
+            System.out.printf("Profit     : +%s%n",
+                    String.format("₹%,.2f", profit));
         else
-            System.out.printf("Loss       : -₹%.2f%n", Math.abs(profit));
+            System.out.printf("Loss       : -%s%n",
+                    String.format("₹%,.2f", Math.abs(profit)));
+
+        ConsoleUI.printDoubleLine();
     }
+
 }
