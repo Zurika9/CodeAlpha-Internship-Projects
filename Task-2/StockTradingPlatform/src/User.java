@@ -145,7 +145,7 @@ public class User
         ConsoleUI.printTitle("TRANSACTION HISTORY");
 
         System.out.printf(
-                "%-8s %-10s %-8s %-13s %-15s %-20s%n",
+                "%-8s %-10s %-8s %-15s %-15s %-20s%n",
                 "Type",
                 "Symbol",
                 "Qty",

@@ -157,10 +157,11 @@ public class Transaction {
                 type,
                 stockSymbol,
                 quantity,
-                formattedPrice,
-                formattedTotal,
+                String.format("₹%,.2f", price),
+                String.format("₹%,.2f", getTotalAmount()),
                 dateTime.format(formatter)
         );
+
     }
 
     /**
