@@ -2,18 +2,24 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Portfolio portfolio = new Portfolio();
+        Market market = new Market();
 
-        portfolio.buyStock("TCS", 5);
-        portfolio.buyStock("INFY", 2);
-        portfolio.buyStock("TCS", 3);
+        User user = new User("Bhavya", 100000);
 
-        portfolio.displayPortfolio();
+        market.displayMarket();
 
-        portfolio.sellStock("TCS", 4);
+        Stock stock = market.getStockBySymbol("TCS");
 
-        System.out.println();
+        user.buyStock(stock, 5);
 
-        portfolio.displayPortfolio();
+        user.getPortfolio().displayPortfolio();
+
+        user.displayBalance();
+
+        user.sellStock(stock, 2);
+
+        user.getPortfolio().displayPortfolio();
+
+        user.displayBalance();
     }
 }
