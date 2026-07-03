@@ -1,24 +1,19 @@
 public class Main {
+
     public static void main(String[] args) {
 
-        Stock stock = new Stock("TCS", "Tata Consultancy Services", 3500);
+        Portfolio portfolio = new Portfolio();
 
-        stock.displayStock();
+        portfolio.buyStock("TCS", 5);
+        portfolio.buyStock("INFY", 2);
+        portfolio.buyStock("TCS", 3);
 
-        stock.updatePrice(10); // price increases by 10%
+        portfolio.displayPortfolio();
 
-        stock.displayStock();
+        portfolio.sellStock("TCS", 4);
 
-        Market market = new Market();
+        System.out.println();
 
-        market.displayMarket();
-
-        System.out.println("\nFinding INFY stock...");
-        Stock s = market.getStockBySymbol("INFY");
-
-        if (s != null)
-        {
-            System.out.println("Found: " + s);
-        }
+        portfolio.displayPortfolio();
     }
 }
