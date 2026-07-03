@@ -304,6 +304,22 @@ The application now saves the user's portfolio to a file, allowing data to persi
 - Object Serialization (manual text format)
 - Collections
 
+## 📌 Step 10: Portfolio Performance
+
+### Features
+
+- Calculates current portfolio value
+- Calculates total investment
+- Displays overall profit or loss
+- Uses live market prices for valuation
+
+### Java Concepts Used
+
+- HashMap
+- Nested loops
+- Aggregation
+- Financial calculations
+
 
 ## 🚀 Learning Outcomes
 

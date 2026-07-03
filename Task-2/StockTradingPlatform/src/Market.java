@@ -48,4 +48,15 @@ public class Market {
             stock.updatePrice(change);
         }
     }
+
+    public double getCurrentPrice(String symbol) {
+
+        Stock stock = getStockBySymbol(symbol);
+
+        if (stock != null) {
+            return stock.getPrice();
+        }
+
+        return 0;
+    }
 }

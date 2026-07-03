@@ -67,4 +67,8 @@ public class Transaction {
         System.out.printf("Total     : ₹%.2f%n", getTotalAmount());
         System.out.println("Time      : " + dateTime.format(formatter));
     }
+
+    public boolean isBuyTransaction() {
+        return type.equalsIgnoreCase("BUY");
+    }
 }

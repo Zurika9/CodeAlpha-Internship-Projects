@@ -146,4 +146,60 @@ public class User
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
     }
+
+    public void displayPortfolioPerformance(Market market) {
+
+        double totalInvestment = 0;
+        double currentValue = 0;
+
+        System.out.println("\n========== PORTFOLIO PERFORMANCE ==========");
+
+        System.out.printf("%-10s %-8s %-15s%n",
+                "Stock",
+                "Quantity",
+                "Current Value");
+
+        for (String symbol : portfolio.getHoldings().keySet()) {
+
+            int quantity = portfolio.getHoldings().get(symbol);
+
+            double currentPrice = market.getCurrentPrice(symbol);
+
+            double value = quantity * currentPrice;
+
+            currentValue += value;
+
+            double investment = 0;
+
+            for (Transaction t : transactions) {
+
+                if (t.isBuyTransaction()
+                        && t.getStockSymbol().equals(symbol)) {
+
+                    investment +=
+                            t.getPrice() * t.getQuantity();
+                }
+            }
+
+            totalInvestment += investment;
+
+            System.out.printf("%-10s %-8d ₹%.2f%n",
+                    symbol,
+                    quantity,
+                    value);
+        }
+
+        System.out.println("-------------------------------------");
+
+        System.out.printf("Investment : ₹%.2f%n", totalInvestment);
+
+        System.out.printf("Current    : ₹%.2f%n", currentValue);
+
+        double profit = currentValue - totalInvestment;
+
+        if (profit >= 0)
+            System.out.printf("Profit     : +₹%.2f%n", profit);
+        else
+            System.out.printf("Loss       : -₹%.2f%n", Math.abs(profit));
+    }
 }
