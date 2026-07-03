@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class FileManager {
 
     private static final String PORTFOLIO_FILE = "data/portfolio.txt";
+    private static final String USER_FILE = "data/user.txt";
 
     // Save portfolio to file
     public static void savePortfolio(User user) {
@@ -75,6 +76,46 @@ public class FileManager {
         } catch (Exception e) {
 
             System.out.println("Error loading portfolio.");
+        }
+    }
+
+    public static void saveUser(User user)
+    {
+
+        try (FileWriter writer = new FileWriter(USER_FILE))
+        {
+
+            writer.write(user.getName() + "\n");
+            writer.write(user.getBalance() + "\n");
+
+        }
+        catch (IOException e)
+        {
+
+            System.out.println("Error saving user data.");
+        }
+    }
+
+    public static void loadUser(User user) {
+
+        try {
+
+            File file = new File(USER_FILE);
+
+            if (!file.exists()) {
+                return;
+            }
+
+            Scanner scanner = new Scanner(file);
+
+            user.setName(scanner.nextLine());
+            user.setBalance(Double.parseDouble(scanner.nextLine()));
+
+            scanner.close();
+
+        } catch (Exception e) {
+
+            System.out.println("Error loading user data.");
         }
     }
 }

@@ -8,6 +8,7 @@ public class Main {
 
         Market market = new Market();
         User user = new User("Bhavya", 100000);
+        FileManager.loadUser(user);
         FileManager.loadPortfolio(user, market);
 
         int choice;
@@ -62,6 +63,7 @@ public class Main {
 
                 case 8:
 
+                    FileManager.saveUser(user);
                     FileManager.savePortfolio(user);
                     System.out.println("Portfolio saved successfully.");
                     System.out.println("Thank you for using Stock Trading Platform.");
