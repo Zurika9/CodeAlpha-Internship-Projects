@@ -8,5 +8,17 @@ public class Main {
         stock.updatePrice(10); // price increases by 10%
 
         stock.displayStock();
+
+        Market market = new Market();
+
+        market.displayMarket();
+
+        System.out.println("\nFinding INFY stock...");
+        Stock s = market.getStockBySymbol("INFY");
+
+        if (s != null)
+        {
+            System.out.println("Found: " + s);
+        }
     }
 }
