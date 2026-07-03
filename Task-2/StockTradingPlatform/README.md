@@ -140,6 +140,30 @@ Exit Program
 
 ---
 
+## 📌 Step 4: Portfolio Class
+
+### 🔹 Purpose
+The `Portfolio` class manages the stocks owned by a user. It keeps track of stock holdings and supports buying and selling operations.
+
+### 🔹 Features
+- Stores stock holdings using a `HashMap`
+- Buy stocks and update quantities
+- Sell stocks with quantity validation
+- Automatically removes stocks when all shares are sold
+- Display current portfolio holdings
+
+### 🔹 Key Methods
+- `buyStock(String symbol, int quantity)`
+- `sellStock(String symbol, int quantity)`
+- `getQuantity(String symbol)`
+- `displayPortfolio()`
+
+### 🔹 Java Concepts Used
+- HashMap
+- Collections Framework
+- Encapsulation
+- Business Logic
+
 ## 🛠️ Technologies Used
 
 * Java (JDK 25+)
