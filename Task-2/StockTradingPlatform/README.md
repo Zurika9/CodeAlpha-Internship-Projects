@@ -1,5 +1,21 @@
 # 📈 Stock Trading Platform (Java OOP Project)
 
+# Stock Trading Platform
+
+**Version:** 1.0
+
+A Java console-based Stock Trading Platform developed as part of the CodeAlpha Java Programming Internship.
+
+## Version History
+
+### Version 1.0
+- Initial release
+- Single-user trading platform
+- Portfolio management
+- Transaction history
+- Market simulation
+- Data persistence using file handling
+
 ## 🧾 Project Overview
 
 The **Stock Trading Platform** is a console-based Java application that simulates a real-world stock market environment. It allows users to view market stocks, buy and sell shares, and track their portfolio performance over time.
