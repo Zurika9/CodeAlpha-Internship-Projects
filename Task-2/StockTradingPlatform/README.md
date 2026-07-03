@@ -355,16 +355,6 @@ CodeAlpha Java Internship Project
 
 ---
 
-## 📌 Status
-
-```
-✔ Stock Class Completed
-✔ Market Class Completed
-⏳ Portfolio System In Progress
-```
-
----
-
 ## ⭐ If you like this project
 
 Give it a ⭐ on GitHub and feel free to contribute or suggest improvements!
