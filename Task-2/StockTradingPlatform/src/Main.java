@@ -10,7 +10,7 @@ public class Main {
         Market market = new Market();
         User user = new User("Bhavya", 100000);
         FileManager.loadUser(user);
-        FileManager.loadPortfolio(user, market);
+        FileManager.loadPortfolio(user);
         FileManager.loadTransactions(user);
 
         int choice=0;

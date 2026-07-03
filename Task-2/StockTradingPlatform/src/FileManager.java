@@ -1,27 +1,61 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Scanner;
-import java.time.LocalDateTime;
 
-public class FileManager {
+/**
+ * Utility class responsible for saving and loading
+ * application data from text files.
+ *
+ * This class manages:
+ * - User information
+ * - Portfolio holdings
+ * - Transaction history
+ *
+ * Data is stored inside the "data" directory.
+ *
+ * @author Bhavya Shukla
+ * @version 1.0
+ */
+public final class FileManager {
 
+    /**
+     * File paths used for data persistence.
+     */
     private static final String PORTFOLIO_FILE = "data/portfolio.txt";
     private static final String USER_FILE = "data/user.txt";
     private static final String TRANSACTION_FILE = "data/transactions.txt";
 
-    // Save portfolio to file
+    /**
+     * Prevent instantiation of this utility class.
+     */
+    private FileManager() {
+    }
+
+    /**
+     * Creates the data directory if it does not already exist.
+     */
+    private static void createDataFolder() {
+
+        File folder = new File("data");
+
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+    }
+
+    /**
+     * Saves the user's portfolio holdings.
+     *
+     * @param user User whose portfolio is to be saved
+     */
     public static void savePortfolio(User user) {
 
-        try {
-            File folder = new File("data");
+        createDataFolder();
 
-            if (!folder.exists()) {
-                folder.mkdir();
-            }
-
-            FileWriter writer = new FileWriter(PORTFOLIO_FILE);
+        try (FileWriter writer = new FileWriter(PORTFOLIO_FILE)) {
 
             writer.write(user.getName() + "\n");
             writer.write(user.getBalance() + "\n");
@@ -29,41 +63,51 @@ public class FileManager {
             for (Map.Entry<String, Integer> entry :
                     user.getPortfolio().getHoldings().entrySet()) {
 
-                writer.write(entry.getKey() + "," + entry.getValue() + "\n");
+                writer.write(entry.getKey()
+                        + ","
+                        + entry.getValue()
+                        + "\n");
             }
 
-            writer.close();
-
-            System.out.println("Portfolio saved successfully.");
+            System.out.println("✅ Portfolio saved successfully.");
 
         } catch (IOException e) {
 
-            System.out.println("Error saving portfolio.");
+            System.out.println("❌ Error saving portfolio: "
+                    + e.getMessage());
         }
     }
 
-    // Load portfolio from file
-    public static void loadPortfolio(User user, Market market) {
+    /**
+     * Loads portfolio holdings from file.
+     *
+     * @param user User whose portfolio is to be restored
+     */
+    public static void loadPortfolio(User user) {
 
-        try {
+        File file = new File(PORTFOLIO_FILE);
 
-            File file = new File(PORTFOLIO_FILE);
+        if (!file.exists()) {
+            return;
+        }
 
-            if (!file.exists()) {
-                return;
+        try (Scanner scanner = new Scanner(file)) {
+
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
             }
 
-            Scanner scanner = new Scanner(file);
-
-            // Skip name and balance (we'll improve this later)
-            if (scanner.hasNextLine()) scanner.nextLine();
-            if (scanner.hasNextLine()) scanner.nextLine();
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
 
             while (scanner.hasNextLine()) {
 
-                String line = scanner.nextLine();
+                String[] parts = scanner.nextLine().split(",");
 
-                String[] parts = line.split(",");
+                if (parts.length != 2) {
+                    continue;
+                }
 
                 String symbol = parts[0];
                 int quantity = Integer.parseInt(parts[1]);
@@ -71,109 +115,142 @@ public class FileManager {
                 user.getPortfolio().buyStock(symbol, quantity);
             }
 
-            scanner.close();
-
-            System.out.println("Portfolio loaded successfully.");
+            System.out.println("✅ Portfolio loaded successfully.");
 
         } catch (Exception e) {
 
-            System.out.println("Error loading portfolio.");
+            System.out.println("❌ Error loading portfolio: "
+                    + e.getMessage());
         }
     }
 
-    public static void saveUser(User user)
-    {
+    /**
+     * Saves user information.
+     *
+     * @param user User to be saved
+     */
+    public static void saveUser(User user) {
 
-        try (FileWriter writer = new FileWriter(USER_FILE))
-        {
+        createDataFolder();
+
+        try (FileWriter writer = new FileWriter(USER_FILE)) {
 
             writer.write(user.getName() + "\n");
             writer.write(user.getBalance() + "\n");
 
-        }
-        catch (IOException e)
-        {
-
-            System.out.println("Error saving user data.");
-        }
-    }
-
-    public static void loadUser(User user) {
-
-        try {
-
-            File file = new File(USER_FILE);
-
-            if (!file.exists()) {
-                return;
-            }
-
-            Scanner scanner = new Scanner(file);
-
-            user.setName(scanner.nextLine());
-            user.setBalance(Double.parseDouble(scanner.nextLine()));
-
-            scanner.close();
-
-        } catch (Exception e) {
-
-            System.out.println("Error loading user data.");
-        }
-    }
-
-    public static void saveTransactions(User user) {
-
-        try (FileWriter writer = new FileWriter(TRANSACTION_FILE)) {
-
-            for (Transaction t : user.getTransactions()) {
-
-                writer.write(
-                        t.getType() + "," +
-                                t.getStockSymbol() + "," +
-                                t.getQuantity() + "," +
-                                t.getPrice() + "," +
-                                t.getDateTime() + "\n"
-                );
-            }
+            System.out.println("✅ User data saved successfully.");
 
         } catch (IOException e) {
 
-            System.out.println("Error saving transactions.");
+            System.out.println("❌ Error saving user data: "
+                    + e.getMessage());
         }
     }
 
+    /**
+     * Loads user information.
+     *
+     * @param user User object to populate
+     */
+    public static void loadUser(User user) {
+
+        File file = new File(USER_FILE);
+
+        if (!file.exists()) {
+            return;
+        }
+
+        try (Scanner scanner = new Scanner(file)) {
+
+            if (scanner.hasNextLine()) {
+                user.setName(scanner.nextLine());
+            }
+
+            if (scanner.hasNextLine()) {
+                user.setBalance(
+                        Double.parseDouble(scanner.nextLine()));
+            }
+
+            System.out.println("✅ User data loaded successfully.");
+
+        } catch (Exception e) {
+
+            System.out.println("❌ Error loading user data: "
+                    + e.getMessage());
+        }
+    }
+
+    /**
+     * Saves the user's transaction history.
+     *
+     * @param user User whose transactions are to be saved
+     */
+    public static void saveTransactions(User user) {
+
+        createDataFolder();
+
+        try (FileWriter writer = new FileWriter(TRANSACTION_FILE)) {
+
+            for (Transaction transaction : user.getTransactions()) {
+
+                writer.write(
+                        transaction.getType() + ","
+                                + transaction.getStockSymbol() + ","
+                                + transaction.getQuantity() + ","
+                                + transaction.getPrice() + ","
+                                + transaction.getDateTime() + "\n"
+                );
+            }
+
+            System.out.println("✅ Transactions saved successfully.");
+
+        } catch (IOException e) {
+
+            System.out.println("❌ Error saving transactions: "
+                    + e.getMessage());
+        }
+    }
+
+    /**
+     * Loads transaction history from file.
+     *
+     * @param user User whose transaction history is to be restored
+     */
     public static void loadTransactions(User user) {
 
-        try {
+        File file = new File(TRANSACTION_FILE);
 
-            File file = new File(TRANSACTION_FILE);
+        if (!file.exists()) {
+            return;
+        }
 
-            if (!file.exists())
-                return;
-
-            Scanner scanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(file)) {
 
             while (scanner.hasNextLine()) {
 
                 String[] parts = scanner.nextLine().split(",");
 
-                Transaction transaction =
-                        new Transaction(
-                                parts[0],
-                                parts[1],
-                                Integer.parseInt(parts[2]),
-                                Double.parseDouble(parts[3]),
-                                LocalDateTime.parse(parts[4])
-                        );
+                if (parts.length != 5) {
+                    continue;
+                }
+
+                Transaction transaction = new Transaction(
+                        parts[0],
+                        parts[1],
+                        Integer.parseInt(parts[2]),
+                        Double.parseDouble(parts[3]),
+                        LocalDateTime.parse(parts[4])
+                );
 
                 user.addTransaction(transaction);
             }
 
-            scanner.close();
+            System.out.println("✅ Transactions loaded successfully.");
 
         } catch (Exception e) {
 
-            System.out.println("Error loading transactions.");
+            System.out.println("❌ Error loading transactions: "
+                    + e.getMessage());
         }
     }
 }

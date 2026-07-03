@@ -1,4 +1,5 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import java.util.Map;
 
 /**
@@ -24,7 +25,7 @@ public class Portfolio {
      * Constructs an empty portfolio.
      */
     public Portfolio() {
-        holdings = new HashMap<>();
+        holdings = new LinkedHashMap<>();
     }
 
     /**
