@@ -254,6 +254,39 @@ The application now provides an interactive menu-driven interface, allowing user
 - Looping (`do-while`)
 - Method decomposition
 
+## 📌 Step 8: File Persistence
+
+### Purpose
+The application now saves the user's portfolio to a file, allowing data to persist between program executions.
+
+### Features
+- Save portfolio to a text file
+- Load portfolio automatically on startup
+- Create the data folder if it doesn't exist
+- Handle file-related exceptions
+
+### Java Concepts Used
+- File I/O
+- FileWriter
+- Scanner
+- Exception Handling
+- Static Utility Methods
+
+## 📌 Step 8B: Portfolio Persistence
+
+### Features
+
+- Automatically loads portfolio when the application starts
+- Automatically saves portfolio before exiting
+- Stores portfolio data in `data/portfolio.txt`
+- Uses Java File I/O for persistent storage
+
+### Java Concepts Used
+
+- File handling
+- Exception handling
+- Static utility methods
+
 
 ## 🚀 Learning Outcomes
 

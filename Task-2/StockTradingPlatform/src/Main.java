@@ -63,6 +63,7 @@ public class Main {
                 case 8:
 
                     FileManager.savePortfolio(user);
+                    System.out.println("Portfolio saved successfully.");
                     System.out.println("Thank you for using Stock Trading Platform.");
                     break;
 
