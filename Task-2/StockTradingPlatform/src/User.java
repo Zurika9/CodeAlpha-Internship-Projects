@@ -138,4 +138,12 @@ public class User
     {
         this.name = name;
     }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
+    }
 }

@@ -17,6 +17,19 @@ public class Transaction {
         this.dateTime = LocalDateTime.now();
     }
 
+    public Transaction(String type,
+                       String stockSymbol,
+                       int quantity,
+                       double price,
+                       LocalDateTime dateTime) {
+
+        this.type = type;
+        this.stockSymbol = stockSymbol;
+        this.quantity = quantity;
+        this.price = price;
+        this.dateTime = dateTime;
+    }
+
     public String getType() {
         return type;
     }

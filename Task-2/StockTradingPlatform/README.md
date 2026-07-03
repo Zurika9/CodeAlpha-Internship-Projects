@@ -288,6 +288,23 @@ The application now saves the user's portfolio to a file, allowing data to persi
 - Static utility methods
 
 
+## 📌 Step 9: Transaction Persistence
+
+### Features
+
+- Saves complete transaction history
+- Loads transaction history on startup
+- Preserves timestamps
+- Uses LocalDateTime for accurate records
+
+### Java Concepts Used
+
+- File I/O
+- LocalDateTime
+- Object Serialization (manual text format)
+- Collections
+
+
 ## 🚀 Learning Outcomes
 
 By building this project, I learned:

@@ -1,4 +1,4 @@
 Bhavya
-81200.0
-TCS,9
-INFY,6
+69400.0
+TCS,11
+INFY,9

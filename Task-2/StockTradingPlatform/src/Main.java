@@ -10,6 +10,7 @@ public class Main {
         User user = new User("Bhavya", 100000);
         FileManager.loadUser(user);
         FileManager.loadPortfolio(user, market);
+        FileManager.loadTransactions(user);
 
         int choice;
 
@@ -65,7 +66,8 @@ public class Main {
 
                     FileManager.saveUser(user);
                     FileManager.savePortfolio(user);
-                    System.out.println("Portfolio saved successfully.");
+                    FileManager.saveTransactions(user);
+
                     System.out.println("Thank you for using Stock Trading Platform.");
                     break;
 
