@@ -1,22 +1,51 @@
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a user's investment portfolio.
+ * Stores the stocks owned by the user along with
+ * the quantity of shares for each stock.
+ *
+ * Provides functionality to buy, sell, and display
+ * portfolio holdings.
+ *
+ * @author Bhavya Shukla
+ * @version 1.0
+ */
 public class Portfolio {
 
-    private HashMap<String, Integer> holdings;
+    /**
+     * Stores stock symbol as key and
+     * number of shares as value.
+     */
+    private final Map<String, Integer> holdings;
 
-    // Constructor
+    /**
+     * Constructs an empty portfolio.
+     */
     public Portfolio() {
         holdings = new HashMap<>();
     }
 
-    // Buy stock
+    /**
+     * Adds purchased shares to the portfolio.
+     *
+     * @param symbol   Stock symbol
+     * @param quantity Number of shares purchased
+     */
     public void buyStock(String symbol, int quantity) {
+
         holdings.put(symbol,
                 holdings.getOrDefault(symbol, 0) + quantity);
     }
 
-    // Sell stock
+    /**
+     * Sells shares from the portfolio.
+     *
+     * @param symbol   Stock symbol
+     * @param quantity Number of shares to sell
+     * @return true if sale is successful, otherwise false
+     */
     public boolean sellStock(String symbol, int quantity) {
 
         if (!holdings.containsKey(symbol)) {
@@ -38,17 +67,33 @@ public class Portfolio {
         return true;
     }
 
-    // Get quantity of a stock
+    /**
+     * Returns the number of shares owned
+     * for a given stock.
+     *
+     * @param symbol Stock symbol
+     * @return Quantity owned
+     */
     public int getQuantity(String symbol) {
+
         return holdings.getOrDefault(symbol, 0);
     }
 
-    // Display portfolio
+    /**
+     * Displays the user's portfolio in a
+     * formatted table showing stock symbol,
+     * shares owned, current price,
+     * and total value.
+     *
+     * @param market Market object used to
+     *               retrieve current prices
+     */
     public void displayPortfolio(Market market) {
 
         ConsoleUI.printTitle("YOUR PORTFOLIO");
 
         if (holdings.isEmpty()) {
+
             System.out.println("📭 Your portfolio is empty.");
             ConsoleUI.printDoubleLine();
             return;
@@ -74,24 +119,33 @@ public class Portfolio {
 
             totalValue += value;
 
-            System.out.printf("%-12s %-10d ₹%-14,.2f ₹%-14,.2f%n",
+            String formattedPrice = String.format("₹%,.2f", price);
+            String formattedValue = String.format("₹%,.2f", value);
+
+            System.out.printf("%-12s %-10d %-15s %-15s%n",
                     symbol,
                     quantity,
-                    price,
-                    value);
+                    formattedPrice,
+                    formattedValue);
         }
 
         ConsoleUI.printLine();
 
-        System.out.printf("%-39s ₹%,.2f%n",
+        System.out.printf("%-39s %s%n",
                 "Total Portfolio Value:",
-                totalValue);
+                String.format("₹%,.2f", totalValue));
 
         ConsoleUI.printDoubleLine();
     }
 
-    // Getter
-    public HashMap<String, Integer> getHoldings() {
+    /**
+     * Returns all portfolio holdings.
+     *
+     * @return Map containing stock symbols
+     *         and quantities owned
+     */
+    public Map<String, Integer> getHoldings() {
+
         return holdings;
     }
 }
