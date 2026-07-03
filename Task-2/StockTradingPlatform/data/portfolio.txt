@@ -1,0 +1,4 @@
+Bhavya
+100000.0
+TCS,5
+INFY,3
