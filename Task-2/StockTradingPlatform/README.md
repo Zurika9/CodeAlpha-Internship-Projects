@@ -164,6 +164,25 @@ The `Portfolio` class manages the stocks owned by a user. It keeps track of stoc
 - Encapsulation
 - Business Logic
 
+## 📌 Step 5: User Class
+
+### Purpose
+The `User` class represents a trader in the stock trading platform. It manages the user's wallet balance, portfolio, and trading operations.
+
+### Features
+- Stores user details
+- Tracks wallet balance
+- Buys stocks after balance validation
+- Sells stocks after ownership validation
+- Integrates with the `Portfolio` class
+
+### Java Concepts Used
+- Object composition
+- Business logic implementation
+- Encapsulation
+
+---
+
 ## 🛠️ Technologies Used
 
 * Java (JDK 25+)
