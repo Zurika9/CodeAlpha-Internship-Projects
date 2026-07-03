@@ -29,15 +29,8 @@ public class Main {
             System.out.println("7. View Transaction History");
             System.out.println("8. Update Market Prices");
             System.out.println("9. Exit");
-            System.out.print("Enter your choice: ");
 
-            try {
-                choice = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("\n❌ Invalid input! Please enter a number between 1 and 9.");
-                scanner.nextLine(); // Clear invalid input
-                continue;
-            }
+            choice = readMenuChoice(scanner);
 
             switch (choice) {
 
@@ -91,6 +84,54 @@ public class Main {
         scanner.close();
     }
 
+    private static int readPositiveInteger(Scanner scanner, String prompt) {
+
+        while (true) {
+
+            System.out.print(prompt);
+
+            try {
+
+                int value = scanner.nextInt();
+
+                if (value > 0) {
+                    return value;
+                }
+
+                System.out.println("❌ Please enter a positive number.");
+
+            } catch (InputMismatchException e) {
+
+                System.out.println("❌ Invalid input! Numbers only.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    private static int readMenuChoice(Scanner scanner) {
+
+        while (true) {
+
+            System.out.print("Enter your choice: ");
+
+            try {
+
+                int choice = scanner.nextInt();
+
+                if (choice >= 1 && choice <= 9) {
+                    return choice;
+                }
+
+                System.out.println("❌ Please enter a number between 1 and 9.");
+
+            } catch (InputMismatchException e) {
+
+                System.out.println("❌ Invalid input! Please enter a number.");
+                scanner.nextLine(); // Clear invalid input
+            }
+        }
+    }
+
     private static void buyStock(Scanner scanner, Market market, User user) {
 
         System.out.print("Enter Stock Symbol: ");
@@ -103,22 +144,8 @@ public class Main {
             return;
         }
 
-        System.out.print("Enter Quantity: ");
+        int quantity = readPositiveInteger(scanner, "Enter Quantity: ");
 
-        int quantity;
-
-        try {
-            quantity = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("❌ Quantity must be a whole number.");
-            scanner.nextLine();
-            return;
-        }
-
-        if (quantity <= 0) {
-            System.out.println("❌ Quantity must be greater than zero.");
-            return;
-        }
 
         user.buyStock(stock, quantity);
     }
@@ -137,20 +164,7 @@ public class Main {
 
         System.out.print("Enter Quantity: ");
 
-        int quantity;
-
-        try {
-            quantity = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("❌ Quantity must be a whole number.");
-            scanner.nextLine();
-            return;
-        }
-
-        if (quantity <= 0) {
-            System.out.println("❌ Quantity must be greater than zero.");
-            return;
-        }
+        int quantity = readPositiveInteger(scanner, "Enter Quantity: ");
 
         user.sellStock(stock, quantity);
     }

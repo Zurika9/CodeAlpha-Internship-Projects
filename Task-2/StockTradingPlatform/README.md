@@ -335,6 +335,21 @@ Improved the application's robustness by validating user input and handling inva
 - `InputMismatchException`
 - Input Validation
 
+## 📌 Step 11B: Code Refactoring
+
+### Improvements
+
+- Eliminated duplicate validation logic.
+- Introduced reusable helper methods.
+- Improved code readability and maintainability.
+- Followed the DRY (Don't Repeat Yourself) principle.
+
+### Java Concepts Used
+
+- Method decomposition
+- Code reusability
+- Clean code practices
+
 
 ## 🚀 Learning Outcomes
 
