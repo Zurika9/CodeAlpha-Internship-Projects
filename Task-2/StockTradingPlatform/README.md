@@ -183,6 +183,28 @@ The `User` class represents a trader in the stock trading platform. It manages t
 
 ---
 
+## 📌 Step 6: Transaction Class
+
+### Purpose
+
+The `Transaction` class records every stock purchase and sale performed by the user.
+
+### Features
+
+- Stores transaction type (BUY/SELL)
+- Records stock symbol
+- Stores quantity purchased or sold
+- Calculates total transaction amount
+- Saves transaction timestamp
+- Displays transaction details in a formatted manner
+
+### Java Concepts Used
+
+- LocalDateTime
+- DateTimeFormatter
+- Encapsulation
+- Object-Oriented Design
+
 ## 🛠️ Technologies Used
 
 * Java (JDK 25+)
