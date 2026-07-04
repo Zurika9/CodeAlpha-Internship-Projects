@@ -27,37 +27,39 @@ public class ReportCard {
      */
     public static void displayReport(Student student) {
 
-        System.out.println();
-        System.out.println("==================================================");
-        System.out.println("                STUDENT REPORT CARD");
-        System.out.println("==================================================");
+        ConsoleUI.printTitle("STUDENT REPORT CARD");
 
-        // ---------------- Student Information ----------------
+        // =====================================================
+        // Student Information
+        // =====================================================
 
-        System.out.println("Student ID        : " + student.getId());
-        System.out.println("Student Name      : " + student.getName());
+        ConsoleUI.printField("Student ID", student.getId());
+        ConsoleUI.printField("Student Name", student.getName());
 
-        System.out.println("--------------------------------------------------");
+        ConsoleUI.printSeparator();
 
-        // ---------------- Subject Marks ----------------
+        // =====================================================
+        // Subject Marks
+        // =====================================================
 
-        System.out.printf("English           : %.2f%n", student.getEnglish());
-        System.out.printf("Mathematics       : %.2f%n", student.getMathematics());
-        System.out.printf("Science           : %.2f%n", student.getScience());
-        System.out.printf("Computer          : %.2f%n", student.getComputer());
-        System.out.printf("Social Science    : %.2f%n", student.getSocial());
+        ConsoleUI.printField("English", String.format("%.2f", student.getEnglish()));
+        ConsoleUI.printField("Mathematics", String.format("%.2f", student.getMathematics()));
+        ConsoleUI.printField("Science", String.format("%.2f", student.getScience()));
+        ConsoleUI.printField("Computer", String.format("%.2f", student.getComputer()));
+        ConsoleUI.printField("Social Science", String.format("%.2f", student.getSocial()));
 
-        System.out.println("--------------------------------------------------");
+        ConsoleUI.printSeparator();
 
-        // ---------------- Academic Summary ----------------
+        // =====================================================
+        // Academic Summary
+        // =====================================================
 
-        System.out.printf("Total Marks       : %.2f%n", student.getTotalMarks());
-        System.out.printf("Average Marks     : %.2f%n", student.getAverage());
-        System.out.printf("Highest Marks     : %.2f%n", student.getHighestMarks());
-        System.out.printf("Lowest Marks      : %.2f%n", student.getLowestMarks());
+        ConsoleUI.printField("Total Marks", String.format("%.2f", student.getTotalMarks()));
+        ConsoleUI.printField("Average Marks", String.format("%.2f", student.getAverage()));
+        ConsoleUI.printField("Highest Marks", String.format("%.2f", student.getHighestMarks()));
+        ConsoleUI.printField("Lowest Marks", String.format("%.2f", student.getLowestMarks()));
+        ConsoleUI.printField("Grade", student.getGrade());
 
-        System.out.println("Grade             : " + student.getGrade());
-
-        System.out.println("==================================================");
+        ConsoleUI.printBorder();
     }
 }

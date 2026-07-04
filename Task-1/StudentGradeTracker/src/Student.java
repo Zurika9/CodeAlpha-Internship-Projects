@@ -7,6 +7,7 @@
  *
  * Responsibilities:
  * • Store student details
+ * • Calculate total marks
  * • Calculate average marks
  * • Calculate highest marks
  * • Calculate lowest marks
@@ -20,13 +21,21 @@
 public class Student {
 
     // =========================================================
-    // Constant
+    // Constants
     // =========================================================
 
     /**
      * Total number of subjects.
      */
     private static final int TOTAL_SUBJECTS = 5;
+
+    /**
+     * Grade boundaries.
+     */
+    private static final int GRADE_A = 90;
+    private static final int GRADE_B = 80;
+    private static final int GRADE_C = 70;
+    private static final int GRADE_D = 60;
 
     // =========================================================
     // Student Information
@@ -84,6 +93,8 @@ public class Student {
 
     /**
      * Returns the student ID.
+     *
+     * @return Student ID
      */
     public int getId() {
         return id;
@@ -91,6 +102,8 @@ public class Student {
 
     /**
      * Returns the student name.
+     *
+     * @return Student name
      */
     public String getName() {
         return name;
@@ -98,6 +111,8 @@ public class Student {
 
     /**
      * Returns English marks.
+     *
+     * @return English marks
      */
     public double getEnglish() {
         return english;
@@ -105,6 +120,8 @@ public class Student {
 
     /**
      * Returns Mathematics marks.
+     *
+     * @return Mathematics marks
      */
     public double getMathematics() {
         return mathematics;
@@ -112,6 +129,8 @@ public class Student {
 
     /**
      * Returns Science marks.
+     *
+     * @return Science marks
      */
     public double getScience() {
         return science;
@@ -119,6 +138,8 @@ public class Student {
 
     /**
      * Returns Computer marks.
+     *
+     * @return Computer marks
      */
     public double getComputer() {
         return computer;
@@ -126,6 +147,8 @@ public class Student {
 
     /**
      * Returns Social Science marks.
+     *
+     * @return Social Science marks
      */
     public double getSocial() {
         return social;
@@ -137,41 +160,76 @@ public class Student {
 
     /**
      * Updates English marks.
+     *
+     * Marks must be between 0 and 100.
+     *
+     * @param english English marks
      */
     public void setEnglish(double english) {
-        this.english = english;
+
+        if (english >= 0 && english <= 100) {
+            this.english = english;
+        }
     }
 
     /**
      * Updates Mathematics marks.
+     *
+     * Marks must be between 0 and 100.
+     *
+     * @param mathematics Mathematics marks
      */
     public void setMathematics(double mathematics) {
-        this.mathematics = mathematics;
+
+        if (mathematics >= 0 && mathematics <= 100) {
+            this.mathematics = mathematics;
+        }
     }
 
     /**
      * Updates Science marks.
+     *
+     * Marks must be between 0 and 100.
+     *
+     * @param science Science marks
      */
     public void setScience(double science) {
-        this.science = science;
+
+        if (science >= 0 && science <= 100) {
+            this.science = science;
+        }
     }
 
     /**
      * Updates Computer marks.
+     *
+     * Marks must be between 0 and 100.
+     *
+     * @param computer Computer marks
      */
     public void setComputer(double computer) {
-        this.computer = computer;
+
+        if (computer >= 0 && computer <= 100) {
+            this.computer = computer;
+        }
     }
 
     /**
      * Updates Social Science marks.
+     *
+     * Marks must be between 0 and 100.
+     *
+     * @param social Social Science marks
      */
     public void setSocial(double social) {
-        this.social = social;
+
+        if (social >= 0 && social <= 100) {
+            this.social = social;
+        }
     }
 
     // =========================================================
-    // Business Logic
+    // Business Logic Methods
     // =========================================================
 
     /**
@@ -189,7 +247,7 @@ public class Student {
     }
 
     /**
-     * Calculates average marks.
+     * Calculates the average marks obtained by the student.
      *
      * @return Average marks
      */
@@ -231,32 +289,31 @@ public class Student {
     }
 
     /**
-     * Determines the student's grade.
+     * Determines the student's grade based on average marks.
      *
      * Grade Scale:
-     *
      * A : 90 and above
      * B : 80 – 89
      * C : 70 – 79
      * D : 60 – 69
      * F : Below 60
      *
-     * @return Student Grade
+     * @return Student grade
      */
     public String getGrade() {
 
         double average = getAverage();
 
-        if (average >= 90)
+        if (average >= GRADE_A)
             return "A";
 
-        if (average >= 80)
+        if (average >= GRADE_B)
             return "B";
 
-        if (average >= 70)
+        if (average >= GRADE_C)
             return "C";
 
-        if (average >= 60)
+        if (average >= GRADE_D)
             return "D";
 
         return "F";
@@ -267,7 +324,14 @@ public class Student {
     // =========================================================
 
     /**
-     * Returns formatted student information.
+     * Returns student information as a formatted string.
+     *
+     * Note:
+     * This method is primarily intended for debugging purposes.
+     * A professional tabular display will be implemented in
+     * StudentManager for the application's console UI.
+     *
+     * @return Formatted student information
      */
     @Override
     public String toString() {
