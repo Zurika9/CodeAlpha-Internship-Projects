@@ -4,30 +4,29 @@
 
 Student Grade Tracker is a Java console-based application developed as part of the CodeAlpha Java Programming Internship.
 
-The application helps manage multiple students, calculate academic performance, generate report cards, and store student records.
+The application manages multiple students, calculates academic performance, generates report cards, and stores student records using file handling.
 
 ---
 
-## Current Progress
+## Project Features
 
-### ✅ Module 1 Completed
+### Student Management
 
-Implemented the following components:
+- Add Student
+- View Students
+- Search Student by ID
+- Search Student by Name
+- Update Student Marks
+- Delete Student
 
-- Student class
-- ReportCard class
-- Professional project structure
+### Academic Features
 
-### Features Implemented
-
-- Store student information
-- Store marks for five subjects
-- Calculate total marks
-- Calculate average marks
-- Calculate highest marks
-- Calculate lowest marks
-- Automatic grade calculation
-- Formatted report card generation
+- Calculate Total Marks
+- Calculate Average Marks
+- Calculate Highest Marks
+- Calculate Lowest Marks
+- Automatic Grade Calculation
+- Professional Report Card Generation
 
 ---
 
@@ -46,22 +45,34 @@ Implemented the following components:
 - Java
 - IntelliJ IDEA
 - Object-Oriented Programming
+- ArrayList
 - File Handling (Upcoming)
 
 ---
 
 ## Upcoming Features
 
-- Student Management
-- Search by ID
-- Search by Name
-- Update Marks
-- Delete Student
-- Statistics
-- Ranking
+- Save Student Records
+- Load Student Records
+- Student Rankings
+- Class Statistics
+- Grade Distribution
 - CSV Export
-- File Persistence
+- Input Validation
+- Professional Console UI
 
 ---
 
-**Project Status:** 🚧 In Development (Module 1 Completed)
+## Current Progress
+
+### ✅ Module 1
+- Student Model
+- Report Card
+
+### ✅ Module 2
+- Student Manager
+- Complete CRUD Operations
+
+---
+
+**Project Status:** 🚧 In Development (Modules 1 & 2 Completed)
