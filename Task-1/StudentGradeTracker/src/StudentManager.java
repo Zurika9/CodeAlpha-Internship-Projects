@@ -477,6 +477,50 @@ public class StudentManager {
     }
 
     // =========================================================
+// Filter Students By Grade
+// =========================================================
+
+    /**
+     * Displays all students belonging to
+     * the specified grade.
+     *
+     * @param grade Grade to filter
+     */
+    public void filterStudentsByGrade(String grade) {
+
+        if (isEmpty()) {
+
+            displayEmptyMessage();
+            return;
+        }
+
+        boolean found = false;
+
+        ConsoleUI.printTitle(
+                "GRADE " + grade.toUpperCase() + " STUDENTS"
+        );
+
+        for (Student student : students) {
+
+            if (student.getGrade()
+                    .equalsIgnoreCase(grade)) {
+
+                System.out.println(student);
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+
+            ConsoleUI.showInfo(
+                    "No students found with Grade "
+                            + grade.toUpperCase()
+            );
+        }
+    }
+
+    // =========================================================
     // Sorting Methods
     // =========================================================
 

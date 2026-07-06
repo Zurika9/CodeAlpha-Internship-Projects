@@ -138,6 +138,67 @@ public class FileManager {
         }
     }
 
+    // =========================================================
+    // Export Student Data To CSV
+    // =========================================================
+    /**
+     * Exports all student records to a CSV file.
+     *
+     * @param students List of students to export
+     */
+    public void exportStudentDataToCSV(
+            ArrayList<Student> students) {
+
+        final String REPORT_FILE =
+                "student_report.csv";
+
+        try (PrintWriter writer =
+                     new PrintWriter(
+                             new FileWriter(REPORT_FILE))) {
+
+            // CSV Header
+            writer.println(
+                    "ID,Name,English,Mathematics,Science,Computer,Social,"
+                            + "Total,Average,Highest,Lowest,Grade"
+            );
+
+            // Student Records
+            for (Student student : students) {
+
+                writer.printf(
+                        "%d,%s,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%s%n",
+
+                        student.getId(),
+                        student.getName(),
+                        student.getEnglish(),
+                        student.getMathematics(),
+                        student.getScience(),
+                        student.getComputer(),
+                        student.getSocial(),
+                        student.getTotalMarks(),
+                        student.getAverage(),
+                        student.getHighestMarks(),
+                        student.getLowestMarks(),
+                        student.getGrade()
+                );
+            }
+
+            ConsoleUI.showSuccess(
+                    "Student data exported successfully.\n"
+                            + "File : "
+                            + REPORT_FILE
+            );
+
+        }
+
+        catch (IOException exception) {
+
+            ConsoleUI.showError(
+                    "Unable to export student data."
+            );
+        }
+    }
+
     /**
      * Converts one CSV record into a Student object.
      *
