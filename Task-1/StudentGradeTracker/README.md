@@ -147,3 +147,265 @@ This project was developed to strengthen practical knowledge of:
 **Current Version:** `Student Grade Tracker v1.0`
 
 **Project Status:** ✅ Production Ready
+
+# 🏗️ Project Architecture
+
+The Student Grade Tracker follows a **modular Object-Oriented Architecture**, where every class has a single, well-defined responsibility.
+
+```
+                    +----------------------+
+                    |      Main.java       |
+                    |----------------------|
+                    | Application Control  |
+                    +----------+-----------+
+                               |
+        -------------------------------------------------
+        |                |               |              |
+        ▼                ▼               ▼              ▼
++---------------+ +---------------+ +-------------+ +---------------+
+| StudentManager| |  FileManager  | | ReportCard | |  ConsoleUI    |
++---------------+ +---------------+ +-------------+ +---------------+
+| Business Logic| | File Handling | | Report View| | Console Output|
++-------+-------+ +-------+-------+ +------+------+ +-------+-------+
+        |
+        ▼
++------------------+
+|   Student.java   |
++------------------+
+| Student Entity   |
+| Marks & Grades   |
++------------------+
+```
+
+---
+
+# 📂 Project Structure
+
+```text
+StudentGradeTracker
+│
+├── src
+│   ├── ConsoleUI.java
+│   ├── FileManager.java
+│   ├── Main.java
+│   ├── ReportCard.java
+│   ├── Student.java
+│   └── StudentManager.java
+│
+├── grades.txt
+├── student_report.csv
+├── screenshots
+│   ├── main-menu.png
+│   ├── student-list.png
+│   ├── report-card.png
+│   ├── statistics.png
+│   ├── rankings.png
+│   ├── grade-distribution.png
+│   └── csv-export.png
+│
+└── README.md
+```
+
+---
+
+# 📦 Class Responsibilities
+
+## Main.java
+
+**Purpose**
+
+Acts as the controller of the application.
+
+### Responsibilities
+
+- Application initialization
+- Displaying the main menu
+- Reading user input
+- Coordinating all modules
+- Application shutdown
+
+---
+
+## Student.java
+
+**Purpose**
+
+Represents a student entity.
+
+### Responsibilities
+
+- Store student details
+- Store subject marks
+- Calculate total marks
+- Calculate average marks
+- Calculate highest marks
+- Calculate lowest marks
+- Calculate grade
+
+---
+
+## StudentManager.java
+
+**Purpose**
+
+Handles all business logic.
+
+### Responsibilities
+
+- Add student
+- Update student
+- Delete student
+- Search by ID
+- Search by Name
+- Display statistics
+- Display rankings
+- Display topper
+- Grade distribution
+- Grade filtering
+- Sorting students
+
+---
+
+## FileManager.java
+
+**Purpose**
+
+Manages persistent storage.
+
+### Responsibilities
+
+- Save student records
+- Load student records
+- Export CSV reports
+- Create data files
+- Parse student records
+
+---
+
+## ReportCard.java
+
+**Purpose**
+
+Displays a formatted report card.
+
+### Responsibilities
+
+- Student information
+- Subject-wise marks
+- Academic summary
+- Grade display
+
+---
+
+## ConsoleUI.java
+
+**Purpose**
+
+Provides reusable console components.
+
+### Responsibilities
+
+- Borders
+- Titles
+- Message boxes
+- Student tables
+- Welcome screen
+- Exit screen
+
+---
+
+# ⚙️ Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Java | Core Programming Language |
+| OOP | Modular Design |
+| Collections Framework | Student Record Management |
+| File Handling | Persistent Storage |
+| Exception Handling | Robust Input Validation |
+| Scanner | User Input |
+| CSV | Report Export |
+| Git | Version Control |
+| GitHub | Source Code Hosting |
+
+---
+
+# 🎯 Object-Oriented Principles Applied
+
+The project demonstrates several Object-Oriented Programming principles.
+
+## Encapsulation
+
+- Private data members
+- Public getter and setter methods
+
+---
+
+## Single Responsibility Principle (SRP)
+
+Each class has one clearly defined responsibility.
+
+Example:
+
+- Student → Student information
+- FileManager → File handling
+- ConsoleUI → User interface
+
+---
+
+## Modularity
+
+The project is divided into reusable classes.
+
+This improves:
+
+- Maintainability
+- Readability
+- Scalability
+
+---
+
+## Reusability
+
+Common functionality has been extracted into reusable methods.
+
+Examples include:
+
+- ConsoleUI
+- ReportCard
+- FileManager helper methods
+
+---
+
+# 🔄 Application Workflow
+
+```text
+Application Starts
+        │
+        ▼
+Initialize Application
+        │
+        ▼
+Load Student Records
+        │
+        ▼
+Display Main Menu
+        │
+        ▼
+User Selects Menu Option
+        │
+        ▼
+Business Logic Executes
+        │
+        ▼
+Display Result
+        │
+        ▼
+Return To Main Menu
+        │
+        ▼
+Exit Application
+        │
+        ▼
+Save Student Records
+```
