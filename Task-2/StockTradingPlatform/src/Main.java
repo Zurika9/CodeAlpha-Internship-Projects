@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * Entry point of the Stock Trading Platform application.
- *
+
  * This class initializes the market and user,
  * displays the main menu,
  * processes user input,

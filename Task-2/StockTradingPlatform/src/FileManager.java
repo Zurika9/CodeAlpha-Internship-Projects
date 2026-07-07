@@ -8,12 +8,12 @@ import java.util.Scanner;
 /**
  * Utility class responsible for saving and loading
  * application data from text files.
- *
+
  * This class manages:
  * - User information
  * - Portfolio holdings
  * - Transaction history
- *
+
  * Data is stored inside the "data" directory.
  *
  * @author Bhavya Shukla
@@ -42,7 +42,12 @@ public final class FileManager {
         File folder = new File("data");
 
         if (!folder.exists()) {
-            folder.mkdir();
+
+            boolean created = folder.mkdirs();
+
+            if (!created) {
+                System.out.println("⚠ Unable to create data directory.");
+            }
         }
     }
 

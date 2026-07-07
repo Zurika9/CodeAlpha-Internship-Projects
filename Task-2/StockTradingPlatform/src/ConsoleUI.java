@@ -1,6 +1,6 @@
 /**
  * Utility class for displaying formatted console output.
- *
+
  * Provides reusable methods for printing titles,
  * separators, and other UI elements to maintain
  * a consistent console interface throughout the application.
