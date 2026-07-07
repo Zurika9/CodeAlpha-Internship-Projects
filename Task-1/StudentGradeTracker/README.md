@@ -409,3 +409,187 @@ Exit Application
         ▼
 Save Student Records
 ```
+
+# 🚀 Installation Guide
+
+## Prerequisites
+
+Before running the project, ensure you have the following installed:
+
+- Java Development Kit (JDK 17 or above)
+- IntelliJ IDEA Community/Ultimate Edition (Recommended)
+    - or Eclipse
+    - or Visual Studio Code with Java Extension Pack
+- Git (Optional, for cloning the repository)
+
+---
+
+# 📥 Clone the Repository
+
+```bash
+git clone https://github.com/<your-github-username>/CodeAlpha-Internship-Projects.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd CodeAlpha-Internship-Projects/Task-1/StudentGradeTracker
+```
+
+---
+
+# ▶ Running the Application
+
+Open the project in your preferred Java IDE.
+
+Locate:
+
+```
+src/Main.java
+```
+
+Run:
+
+```
+Main.java
+```
+
+The application will automatically:
+
+- Load existing student records (if available)
+- Create the data file if it does not exist
+- Display the welcome screen
+- Show the main menu
+
+---
+
+# 📁 Data Files
+
+The application uses two data files.
+
+## grades.txt
+
+Stores student records permanently.
+
+Example:
+
+```text
+101,Bhavya Shukla,95,92,91,97,90
+102,Rahul,65,72,68,75,70
+```
+
+---
+
+## student_report.csv
+
+Generated using the **Export Student Data to CSV** feature.
+
+Contains:
+
+- Student Information
+- Subject Marks
+- Total Marks
+- Average Marks
+- Highest Marks
+- Lowest Marks
+- Grade
+
+This file can be opened in:
+
+- Microsoft Excel
+- Google Sheets
+- LibreOffice Calc
+
+---
+
+# 🧪 Functional Testing
+
+The application has been tested using a structured Quality Assurance process.
+
+## Test Summary
+
+| Test Case | Status |
+|-----------|:------:|
+| Add Student | ✅ |
+| View Students | ✅ |
+| Search by ID | ✅ |
+| Search by Name | ✅ |
+| Update Student | ✅ |
+| Delete Student | ✅ |
+| Generate Report Card | ✅ |
+| Display Statistics | ✅ |
+| Sort Students | ✅ |
+| Display Topper | ✅ |
+| Display Rankings | ✅ |
+| Filter by Grade | ✅ |
+| Grade Distribution | ✅ |
+| Export CSV | ✅ |
+| Save Student Records | ✅ |
+| Exit Application | ✅ |
+
+**Result: 16 / 16 Test Cases Passed**
+
+---
+
+# 💡 Sample Workflow
+
+A typical usage flow of the application:
+
+```text
+Start Application
+        │
+        ▼
+Load Student Records
+        │
+        ▼
+Display Main Menu
+        │
+        ▼
+Add / Search / Update / Delete
+        │
+        ▼
+Generate Reports
+        │
+        ▼
+Display Analytics
+        │
+        ▼
+Export CSV
+        │
+        ▼
+Save Student Records
+        │
+        ▼
+Exit Application
+```
+
+---
+
+# 🛠 Error Handling
+
+The application includes validation for:
+
+- Invalid menu choices
+- Empty names
+- Invalid student IDs
+- Duplicate student IDs
+- Invalid marks
+- Invalid grades
+- File handling exceptions
+- Number format exceptions
+- Unexpected runtime exceptions
+
+This ensures the application remains stable during execution.
+
+---
+
+# 📈 Performance
+
+For the expected scale of this console application:
+
+- Student records are stored using `ArrayList`
+- Searching uses linear search
+- Sorting uses Java's built-in sorting algorithm
+- File operations use efficient buffered writing via `PrintWriter`
+
+The performance is suitable for educational and small-scale academic record management.
