@@ -177,27 +177,6 @@ public class StudentManager {
         return null;
     }
 
-    /**
-     * Displays a student's complete report using
-     * the student ID.
-     *
-     * @param id Student ID
-     */
-    public void displayStudentById(int id) {
-
-        Student student = searchStudentById(id);
-
-        if (student == null) {
-
-            ConsoleUI.showError(
-                    "Student not found."
-            );
-
-            return;
-        }
-
-        ReportCard.displayReport(student);
-    }
 
     /**
      * Searches students using their name.
