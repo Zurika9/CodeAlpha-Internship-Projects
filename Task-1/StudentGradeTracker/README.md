@@ -142,7 +142,7 @@ This project was developed to strengthen practical knowledge of:
 -   Academic Analytics
 -   CSV Export
 -   Persistent File Storage
--   Comprehensive JavaDoc Documentation
+-   Comprehensive Javadoc Documentation
 -   Professional Git Commit History
 -   Fully Tested (16/16 Functional Test Cases Passed)
 
@@ -244,8 +244,8 @@ Represents a student entity.
 -   Store subject marks
 -   Calculate total marks
 -   Calculate average marks
--   Calculate highest marks
--   Calculate lowest marks
+-   Calculate the highest marks
+-   Calculate the lowest marks
 -   Calculate grade
 
 ------------------------------------------------------------------------
