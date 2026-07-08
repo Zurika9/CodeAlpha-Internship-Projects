@@ -1,0 +1,10 @@
+hello=Hello! Nice to meet you.
+hi=Hi there! Welcome.
+how are you=I'm doing great! Thanks for asking.
+what is java=Java is a powerful object-oriented programming language.
+what is ai=Artificial Intelligence enables machines to simulate human intelligence.
+your name=I am CodeAlpha AI ChatBot.
+bye=Goodbye! Have a wonderful day!
+thanks=You're welcome!
+good morning=Good Morning! Have a wonderful day.
+good evening=Good Evening! Hope you're doing well.
