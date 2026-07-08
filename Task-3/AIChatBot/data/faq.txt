@@ -8,3 +8,4 @@ bye=Goodbye! Have a wonderful day!
 thanks=You're welcome!
 good morning=Good Morning! Have a wonderful day.
 good evening=Good Evening! Hope you're doing well.
+who is virat kohli=Virat Kohli is an Indian cricketer.

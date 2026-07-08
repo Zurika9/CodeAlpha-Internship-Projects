@@ -164,17 +164,40 @@ public class ChatBotGUI extends JFrame {
             return;
         }
 
-        // Display user's message
         chatArea.append("You: " + message + "\n");
 
-        // Get bot response
         String response = chatBotEngine.getResponse(message);
 
-        // Display bot response
-        chatArea.append("Bot: " + response + "\n\n");
+        if (response.equals("__UNKNOWN__")) {
+
+            chatArea.append("Bot: I don't know the answer yet.\n");
+
+            String answer = JOptionPane.showInputDialog(
+                    this,
+                    "Please teach me the correct answer:"
+            );
+
+            if (answer != null && !answer.trim().isEmpty()) {
+
+                chatBotEngine.learn(message, answer);
+
+                chatArea.append("Bot: Thank you! I've learned something new.\n\n");
+
+            } else {
+
+                chatArea.append("Bot: No problem. Maybe next time.\n\n");
+
+            }
+
+        } else {
+
+            chatArea.append("Bot: " + response + "\n\n");
+
+        }
 
         inputField.setText("");
 
         chatArea.setCaretPosition(chatArea.getDocument().getLength());
+
     }
 }

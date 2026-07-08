@@ -4,44 +4,46 @@ package chatbot;
  * ==========================================================
  * ChatBotEngine
  *
- * This class processes user messages and retrieves
- * responses from the FAQ database.
+ * Handles chatbot responses and learning.
  * ==========================================================
  */
 public class ChatBotEngine {
 
-    // Reference to the FAQ database
     private FAQDatabase faqDatabase;
+    private DynamicLearner learner;
 
-    /**
-     * Constructor
-     */
     public ChatBotEngine() {
 
         faqDatabase = new FAQDatabase();
+        learner = new DynamicLearner();
 
     }
 
     /**
-     * Generates a chatbot response.
-     *
-     * @param userMessage User's input
-     * @return Bot response
+     * Returns the chatbot's response.
      */
     public String getResponse(String userMessage) {
 
-        // Convert input to lowercase and remove extra spaces
         userMessage = NLPProcessor.preprocess(userMessage);
 
-        // Check if the question exists
         if (faqDatabase.containsQuestion(userMessage)) {
 
             return faqDatabase.getAnswer(userMessage);
 
         }
 
-        // Default response
-        return "Sorry, I don't understand that yet.";
+        return "__UNKNOWN__";
+
+    }
+
+    /**
+     * Teaches the chatbot a new question and answer.
+     */
+    public void learn(String question, String answer) {
+
+        learner.learn(question, answer);
+
+        faqDatabase = new FAQDatabase();
 
     }
 
