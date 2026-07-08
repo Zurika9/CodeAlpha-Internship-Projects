@@ -9,3 +9,4 @@ thanks=You're welcome!
 good morning=Good Morning! Have a wonderful day.
 good evening=Good Evening! Hope you're doing well.
 who is virat kohli=Virat Kohli is an Indian cricketer.
+who is alan turing=Alan Turing was a British mathematician and computer scientist

@@ -1,8 +1,11 @@
 ### IntelliJ IDEA ###
+.idea/
 out/
+*.iml
+.kotlin
+
 !**/src/main/**/out/
 !**/src/test/**/out/
-.kotlin
 
 ### Eclipse ###
 .apt_generated
@@ -26,5 +29,9 @@ bin/
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
+### macOS ###
 .DS_Store
+
+### Windows ###
+Thumbs.db
+Desktop.ini

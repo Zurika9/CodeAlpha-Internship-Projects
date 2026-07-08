@@ -1,6 +1,8 @@
 Bot: Welcome to CodeAlpha AI ChatBot!
 Bot: How can I help you today?
-You: helloe
-Bot: No problem. Maybe next time.
-You: data/chat_history.txt
-Bot: No problem. Maybe next time.
+You: Hello
+Bot: Hello! Nice to meet you.
+You: What is Java?
+Bot: Java is a powerful object-oriented programming language.
+You: Bye
+Bot: Goodbye! Have a wonderful day!

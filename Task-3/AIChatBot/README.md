@@ -130,20 +130,64 @@ Bot:
 Java is a powerful object-oriented programming language.
 
 You:
-Who is ChatGPT?
+Who is Virat Kholi?
 
 Bot:
 I don't know the answer yet.
 Please teach me the correct answer.
 
 You:
-ChatGPT is an AI assistant developed by OpenAI.
+Virat kohli is an Indian Cricketer.
 
 Bot:
 Thank you! I've learned something new.
 ```
 
 ---
+
+---
+
+# 📸 Screenshots
+
+## Main Application Window
+
+![Main Window](screenshots/01-main-window.png)
+
+---
+
+## Basic Chat Interaction
+
+![Basic Chat](screenshots/02-basic-chat-interaction.png)
+
+---
+
+## NLP Processing
+
+![NLP](screenshots/03-nlp-processing-demo.png)
+
+---
+
+## Dynamic Learning
+
+![Dynamic Learning](screenshots/04-dynamic-learning-dialog.png)
+
+---
+
+## Learning Confirmation
+
+![Learning Confirmation](screenshots/05-learning-confirmation.png)
+
+---
+
+## Learned Response
+
+![Learned Response](screenshots/06-learned-response.png)
+
+---
+
+## Chat History
+
+![Chat History](screenshots/07-chat-history.png)
 
 # 📁 Data Files
 
