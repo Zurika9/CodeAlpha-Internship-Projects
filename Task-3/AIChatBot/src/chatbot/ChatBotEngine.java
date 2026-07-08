@@ -2,50 +2,47 @@ package chatbot;
 
 /**
  * ==========================================================
- * ChatBotEngine.java
+ * ChatBotEngine
  *
- * This class contains the chatbot's response logic.
- * Currently it uses simple rule-based responses.
- * Later we will integrate NLP and FAQ matching.
+ * This class processes user messages and retrieves
+ * responses from the FAQ database.
  * ==========================================================
  */
 public class ChatBotEngine {
 
+    // Reference to the FAQ database
+    private FAQDatabase faqDatabase;
+
     /**
-     * Generates a response based on the user's message.
+     * Constructor
+     */
+    public ChatBotEngine() {
+
+        faqDatabase = new FAQDatabase();
+
+    }
+
+    /**
+     * Generates a chatbot response.
      *
-     * @param userMessage Message entered by the user
-     * @return Bot's response
+     * @param userMessage User's input
+     * @return Bot response
      */
     public String getResponse(String userMessage) {
 
-        userMessage = userMessage.toLowerCase().trim();
+        // Convert input to lowercase and remove extra spaces
+        userMessage = NLPProcessor.preprocess(userMessage);
 
-        if (userMessage.equals("hello") || userMessage.equals("hi")) {
-            return "Hello! Nice to meet you.";
+        // Check if the question exists
+        if (faqDatabase.containsQuestion(userMessage)) {
+
+            return faqDatabase.getAnswer(userMessage);
+
         }
 
-        if (userMessage.contains("how are you")) {
-            return "I'm doing great! Thanks for asking.";
-        }
-
-        if (userMessage.contains("your name")) {
-            return "I am CodeAlpha AI ChatBot.";
-        }
-
-        if (userMessage.contains("java")) {
-            return "Java is a powerful object-oriented programming language.";
-        }
-
-        if (userMessage.contains("ai")) {
-            return "Artificial Intelligence enables machines to simulate human intelligence.";
-        }
-
-        if (userMessage.contains("bye")) {
-            return "Goodbye! Have a wonderful day!";
-        }
-
+        // Default response
         return "Sorry, I don't understand that yet.";
+
     }
 
 }
