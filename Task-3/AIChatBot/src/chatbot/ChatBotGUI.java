@@ -44,10 +44,14 @@ public class ChatBotGUI extends JFrame {
     // Bottom panel containing input field and button
     private JPanel bottomPanel;
 
+    private ChatBotEngine chatBotEngine;
+
     /**
      * Constructor
      */
     public ChatBotGUI() {
+
+        chatBotEngine = new ChatBotEngine();
 
         initializeWindow();
 
@@ -154,21 +158,23 @@ public class ChatBotGUI extends JFrame {
      */
     private void sendMessage() {
 
-        // Read user input
         String message = inputField.getText().trim();
 
-        // Ignore empty messages
         if (message.isEmpty()) {
             return;
         }
 
         // Display user's message
-        chatArea.append("You: " + message + "\n\n");
+        chatArea.append("You: " + message + "\n");
 
-        // Clear the input field
+        // Get bot response
+        String response = chatBotEngine.getResponse(message);
+
+        // Display bot response
+        chatArea.append("Bot: " + response + "\n\n");
+
         inputField.setText("");
 
-        // Automatically scroll to the latest message
         chatArea.setCaretPosition(chatArea.getDocument().getLength());
     }
 }
