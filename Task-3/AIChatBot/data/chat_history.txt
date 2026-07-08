@@ -1,0 +1,6 @@
+Bot: Welcome to CodeAlpha AI ChatBot!
+Bot: How can I help you today?
+You: helloe
+Bot: No problem. Maybe next time.
+You: data/chat_history.txt
+Bot: No problem. Maybe next time.

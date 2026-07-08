@@ -149,8 +149,14 @@ public class ChatBotGUI extends JFrame {
      */
     private void displayWelcomeMessage() {
 
-        chatArea.append("Bot: Welcome to CodeAlpha AI ChatBot!\n");
-        chatArea.append("Bot: How can I help you today?\n\n");
+        String welcome1 = "Welcome to CodeAlpha AI ChatBot!";
+        String welcome2 = "How can I help you today?";
+
+        chatArea.append("Bot: " + welcome1 + "\n");
+        chatArea.append("Bot: " + welcome2 + "\n\n");
+
+        ChatHistory.saveMessage("Bot", welcome1);
+        ChatHistory.saveMessage("Bot", welcome2);
     }
 
     /**
@@ -165,6 +171,8 @@ public class ChatBotGUI extends JFrame {
         }
 
         chatArea.append("You: " + message + "\n");
+
+        ChatHistory.saveMessage("You", message);
 
         String response = chatBotEngine.getResponse(message);
 
@@ -182,16 +190,25 @@ public class ChatBotGUI extends JFrame {
                 chatBotEngine.learn(message, answer);
 
                 chatArea.append("Bot: Thank you! I've learned something new.\n\n");
+                ChatHistory.saveMessage(
+                        "Bot",
+                        "Thank you! I've learned something new."
+                );
 
             } else {
 
                 chatArea.append("Bot: No problem. Maybe next time.\n\n");
+                ChatHistory.saveMessage(
+                        "Bot",
+                        "No problem. Maybe next time."
+                );
 
             }
 
         } else {
 
             chatArea.append("Bot: " + response + "\n\n");
+            ChatHistory.saveMessage("Bot", response);
 
         }
 
