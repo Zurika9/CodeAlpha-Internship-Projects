@@ -7,12 +7,12 @@ import java.awt.*;
  * ==========================================================
  * CodeAlpha Internship - Task 3
  * Artificial Intelligence ChatBot
-
+ *
  * ChatBotGUI.java
-
+ *
  * This class represents the graphical user interface (GUI)
  * of the AI ChatBot application.
-
+ *
  * Responsibilities:
  * - Create the main application window
  * - Display the conversation area
@@ -29,7 +29,7 @@ public class ChatBotGUI extends JFrame {
     // Displays the application title
     private JLabel titleLabel;
 
-    // Displays the entire conversation
+    // Displays the conversation
     private JTextArea chatArea;
 
     // Makes the chat area scrollable
@@ -38,10 +38,10 @@ public class ChatBotGUI extends JFrame {
     // User types messages here
     private JTextField inputField;
 
-    // Button used to send messages
+    // Button to send messages
     private JButton sendButton;
 
-    // Panel containing the input field and Send button
+    // Bottom panel containing input field and button
     private JPanel bottomPanel;
 
     /**
@@ -83,9 +83,9 @@ public class ChatBotGUI extends JFrame {
      */
     private void initializeComponents() {
 
-        //--------------------------------------------------
-        // Title
-        //--------------------------------------------------
+        // ==========================
+        // Header
+        // ==========================
 
         titleLabel = new JLabel(
                 "🤖 CodeAlpha AI ChatBot",
@@ -96,9 +96,9 @@ public class ChatBotGUI extends JFrame {
 
         add(titleLabel, BorderLayout.NORTH);
 
-        //--------------------------------------------------
+        // ==========================
         // Chat Area
-        //--------------------------------------------------
+        // ==========================
 
         chatArea = new JTextArea();
 
@@ -114,25 +114,30 @@ public class ChatBotGUI extends JFrame {
 
         add(scrollPane, BorderLayout.CENTER);
 
-        //--------------------------------------------------
+        // ==========================
         // Bottom Panel
-        //--------------------------------------------------
+        // ==========================
 
         bottomPanel = new JPanel(new BorderLayout(10, 0));
-
-        inputField = new JTextField();
-
-        sendButton = new JButton("Send");
 
         bottomPanel.setBorder(
                 BorderFactory.createEmptyBorder(10, 10, 10, 10)
         );
+
+        inputField = new JTextField();
+
+        sendButton = new JButton("Send");
 
         bottomPanel.add(inputField, BorderLayout.CENTER);
 
         bottomPanel.add(sendButton, BorderLayout.EAST);
 
         add(bottomPanel, BorderLayout.SOUTH);
+
+        // Event Listeners
+        sendButton.addActionListener(e -> sendMessage());
+
+        inputField.addActionListener(e -> sendMessage());
     }
 
     /**
@@ -141,8 +146,29 @@ public class ChatBotGUI extends JFrame {
     private void displayWelcomeMessage() {
 
         chatArea.append("Bot: Welcome to CodeAlpha AI ChatBot!\n");
-
         chatArea.append("Bot: How can I help you today?\n\n");
     }
 
+    /**
+     * Sends the user's message to the chat area.
+     */
+    private void sendMessage() {
+
+        // Read user input
+        String message = inputField.getText().trim();
+
+        // Ignore empty messages
+        if (message.isEmpty()) {
+            return;
+        }
+
+        // Display user's message
+        chatArea.append("You: " + message + "\n\n");
+
+        // Clear the input field
+        inputField.setText("");
+
+        // Automatically scroll to the latest message
+        chatArea.setCaretPosition(chatArea.getDocument().getLength());
+    }
 }
