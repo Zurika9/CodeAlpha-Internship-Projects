@@ -815,8 +815,6 @@ Electronics and Communication Engineering Graduate
 
 Java Developer | Software Engineering Enthusiast
 
-GitHub: https://github.com/Zurika9
-
 ---
 
 # License
